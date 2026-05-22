@@ -6,17 +6,21 @@ import tricoImg from "@/assets/agatha-tricologia.jpg";
 import scienceImg from "@/assets/agatha-science.jpg";
 import clinicImg from "@/assets/agatha-clinic.jpg";
 import logo from "@/assets/agatha-logo.png";
+import cert1 from "@/assets/agatha-cert-1.jpg";
+import cert2 from "@/assets/agatha-cert-2.jpg";
+
+const WHATSAPP_URL = "https://wa.me/5531992003849";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ágatha Emanuelle — Biomédica Esteta" },
+      { title: "Dra. Ágatha Emanuelle — Biomédica Esteta" },
       {
         name: "description",
         content:
-          "Estética com propósito: procedimentos seguros, naturais e personalizados em tricologia, pele e injetáveis. Belo Horizonte/MG.",
+          "Estética com propósito: procedimentos seguros, naturais e personalizados. Dra. Ágatha Emanuelle — Especialista em Tricologia e Estética em Belo Horizonte/MG.",
       },
-      { property: "og:title", content: "Ágatha Emanuelle — Biomédica Esteta" },
+      { property: "og:title", content: "Dra. Ágatha Emanuelle — Biomédica Esteta" },
       {
         property: "og:description",
         content: "Beleza com segurança, técnica e sensibilidade.",
@@ -64,124 +68,94 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/70 border-b border-border/50">
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logo} alt="Ágatha Emanuelle" className="h-10 w-10 object-contain" />
-            <span className="font-serif text-lg tracking-tight hidden sm:inline">
-              Ágatha Emanuelle<span className="text-accent">.</span>
-            </span>
+            <img src={logo} alt="Dra. Ágatha Emanuelle" className="h-20 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]" />
+            <div className="hidden sm:block leading-tight">
+              <span className="font-serif text-base tracking-tight block">Dra. Ágatha Emanuelle</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-accent">Biomédica Esteta</span>
+            </div>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#proposito" className="hover:text-foreground transition">Propósito</a>
-            <a href="#servicos" className="hover:text-foreground transition">Procedimentos</a>
-            <a href="#diferencial" className="hover:text-foreground transition">Diferencial</a>
-            <a href="#galeria" className="hover:text-foreground transition">Galeria</a>
-            <a href="#contato" className="hover:text-foreground transition">Contato</a>
+            <a href="#procedimentos" className="hover:text-foreground transition">
+              Procedimentos
+            </a>
+            <a href="#sobre" className="hover:text-foreground transition">
+              Sobre
+            </a>
+            <a href="#contato" className="hover:text-foreground transition">
+              Contato
+            </a>
           </nav>
           <a
-            href="https://wa.me/5531992003849"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="hidden md:inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full gradient-marsala text-primary-foreground hover:opacity-90 transition"
+            className="hidden md:inline-flex btn-agendar text-xs px-5 py-2.5 rounded-full hover:opacity-95 transition"
           >
-            Agendar
+            Agende uma consulta
           </a>
         </div>
       </header>
 
-      {/* HERO */}
-      <section id="top" className="pt-32 pb-20 md:pt-40 md:pb-32 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
-              <span className="h-px w-8 bg-accent" />
-              Biomédica Esteta · CRBM
-            </div>
-            <h1 className="font-serif text-5xl md:text-7xl leading-[1.05] text-balance mb-6">
-              Beleza com <em className="gradient-gold-text not-italic">propósito</em>,
-              cuidado com verdade.
+      {/* 1. HERO — gatilho para agendar */}
+      <section id="top" className="relative min-h-[100svh] overflow-hidden">
+        {/* Mobile: foto como fundo completo */}
+        <img
+          src={heroImg}
+          alt="Dra. Ágatha Emanuelle"
+          className="md:hidden absolute inset-0 w-full h-full object-cover object-top z-0"
+        />
+        <div className="md:hidden absolute inset-0 bg-background/15 z-0" />
+        <div className="absolute inset-0 hero-gold-lines pointer-events-none z-0" />
+
+        {/* Layout: flex-col no mobile (texto em cima), grid 2 colunas no desktop */}
+        <div className="relative z-10 flex flex-col md:grid md:grid-cols-2 min-h-[100svh]">
+
+          {/* Texto + CTA — topo no mobile, coluna esquerda no desktop */}
+          <div className="flex flex-col justify-start md:justify-center px-6 md:px-12 lg:px-20 pt-28 pb-12 md:py-0 text-center md:text-left md:bg-background">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-white md:text-foreground mb-5 drop-shadow-lg md:drop-shadow-none">
+              Sua essência em evidência
             </h1>
-            <p className="text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
-              Sou <strong className="text-foreground font-medium">Ágatha Emanuelle</strong>,
-              biomédica esteta. Acredito em uma estética que respeita seu tempo, seus
-              traços e sua história — entregando resultados naturais com a segurança
-              que você merece.
+            <p className="text-base md:text-lg text-white/95 md:text-muted-foreground max-w-xl mb-8 leading-relaxed font-medium drop-shadow-md md:drop-shadow-none mx-auto md:mx-0">
+              Transformamos cuidado em autoestima, com tratamentos personalizados e atendimento pensados para você.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex justify-center md:justify-start">
               <a
-                href="#contato"
-                className="px-6 py-3 rounded-full gradient-marsala text-primary-foreground text-sm font-medium hover:shadow-[var(--shadow-elegant)] transition"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center bg-primary text-primary-foreground text-sm md:text-base px-8 py-4 rounded-xl hover:opacity-90 transition hover:scale-[1.02] active:scale-[0.98] shadow-lg font-semibold uppercase tracking-wider"
               >
-                Marcar avaliação
-              </a>
-              <a
-                href="#servicos"
-                className="px-6 py-3 rounded-full border border-border text-sm font-medium hover:bg-secondary transition"
-              >
-                Ver procedimentos
+                AGENDE UMA CONSULTA!
               </a>
             </div>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-4 gradient-marsala opacity-10 rounded-[2rem] blur-2xl" />
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)]">
-              <img
-                src={heroImg}
-                alt="Ágatha Emanuelle, biomédica esteta"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl px-5 py-4 shadow-[var(--shadow-soft)]">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Atendendo em
-              </div>
-              <div className="font-serif text-lg">Belo Horizonte · MG</div>
-            </div>
+
+          {/* Foto — coluna direita apenas no desktop */}
+          <div className="hidden md:block relative overflow-hidden">
+            <img
+              src={heroImg}
+              alt="Dra. Ágatha Emanuelle"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
           </div>
+
         </div>
       </section>
 
-      {/* PROPÓSITO */}
-      <section id="proposito" className="py-24 px-6 bg-secondary/40">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-5 gap-12 items-center">
-          <div className="md:col-span-2 aspect-[4/5] rounded-2xl overflow-hidden">
-            <img src={scienceImg} alt="Ágatha em atendimento" className="w-full h-full object-cover" />
-          </div>
-          <div className="md:col-span-3">
-            <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Meu propósito</div>
-            <h2 className="font-serif text-4xl md:text-5xl mb-6 text-balance">
-              Devolver a confiança que existe em cada espelho.
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Mais do que procedimentos, ofereço uma experiência: um espaço seguro
-              para você cuidar de si com leveza, sem pressões e sem padrões.
-              Cada plano de tratamento nasce da sua história, dos seus objetivos
-              e do tempo que cada pele pede.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Minha promessa é simples: você sairá daqui se sentindo ouvida,
-              respeitada e mais bonita — sempre você, sempre natural.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVIÇOS */}
-      <section id="servicos" className="py-24 px-6">
+      {/* 2. PROCEDIMENTOS */}
+      <section id="procedimentos" className="py-20 md:py-28 px-6 bg-secondary/30">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
-            <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">
-                Procedimentos
-              </div>
-              <h2 className="font-serif text-4xl md:text-5xl text-balance max-w-2xl">
-                Cuidado completo, da raiz à pele.
-              </h2>
-            </div>
-            <p className="text-muted-foreground max-w-sm">
-              Protocolos personalizados, com produtos certificados e técnica refinada
-              — pensados para o seu momento.
+          <div className="text-center mb-12 md:mb-16">
+            <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Procedimentos</div>
+            <h2 className="font-serif text-4xl md:text-5xl text-balance max-w-2xl mx-auto mb-4">
+              Cuidado completo, da raiz à pele.
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Protocolos personalizados, com produtos certificados e técnica refinada —
+              pensados para o seu momento.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -204,21 +178,93 @@ function Index() {
               </article>
             ))}
           </div>
+          <div className="text-center mt-12">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex btn-agendar text-sm px-8 py-3.5 rounded-full hover:opacity-95 transition"
+            >
+              Agende sua avaliação
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SOBRE ELA */}
+      <section id="sobre" className="py-20 md:py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-start">
+            <div className="md:col-span-2">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-[var(--shadow-soft)] border border-border">
+                <img
+                  src={scienceImg}
+                  alt="Dra. Ágatha Emanuelle em atendimento"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="md:col-span-3">
+              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Sobre a Dra. Ágatha</div>
+              <h2 className="font-serif text-4xl md:text-5xl mb-6 text-balance">
+                Beleza com propósito, cuidado com verdade.
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Sou a <strong className="text-foreground font-medium">Dra. Ágatha Emanuelle</strong>,
+                biomédica esteta (CRBM). Acredito em uma estética que respeita seu tempo, seus
+                traços e sua história — entregando resultados naturais com a segurança que você
+                merece.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Mais do que procedimentos, ofereço uma experiência: um espaço seguro para você
+                cuidar de si com leveza, sem pressões e sem padrões. Cada plano de tratamento
+                nasce da sua história, dos seus objetivos e do tempo que cada pele pede.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Minha promessa é simples: você sairá daqui se sentindo ouvida, respeitada e mais
+                bonita — sempre você, sempre natural.
+              </p>
+
+              <div className="mb-8 p-6 rounded-2xl bg-secondary/50 border border-border">
+                <h3 className="font-serif text-xl mb-2">Formação e especialização</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Dra. Ágatha une o rigor científico da biomedicina à sensibilidade estética.
+                  Com especializações reconhecidas e protocolos baseados em evidência, sua
+                  prática é focada em resultados seguros e naturais — atendendo em Belo Horizonte/MG.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+                  <img src={cert1} alt="Certificado de especialização" className="w-full h-auto" />
+                </div>
+                <div className="rounded-xl overflow-hidden border border-border shadow-sm">
+                  <img src={cert2} alt="Certificado de especialização" className="w-full h-auto" />
+                </div>
+              </div>
+
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex btn-agendar text-sm px-6 py-3 rounded-full hover:opacity-95 transition"
+              >
+                Conhecer e agendar
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* DIFERENCIAL */}
-      <section id="diferencial" className="py-24 px-6 gradient-marsala text-primary-foreground">
+      <section id="diferencial" className="py-20 md:py-28 px-6 gradient-marsala text-primary-foreground">
         <div className="max-w-7xl mx-auto">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">
-            Por que escolher
-          </div>
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Por que escolher</div>
           <h2 className="font-serif text-4xl md:text-5xl mb-4 text-balance max-w-3xl">
             Três compromissos que guiam cada atendimento.
           </h2>
           <p className="text-primary-foreground/70 max-w-2xl mb-12">
-            Estética é detalhe — e detalhe é cuidado. Veja o que torna a experiência
-            aqui diferente.
+            Estética é detalhe — e detalhe é cuidado. Veja o que torna a experiência aqui diferente.
           </p>
           <div className="grid md:grid-cols-3 gap-px bg-primary-foreground/10 rounded-2xl overflow-hidden">
             {pillars.map((p, i) => (
@@ -226,13 +272,9 @@ function Index() {
                 key={p.title}
                 className="bg-primary p-8 hover:bg-primary/80 transition-colors"
               >
-                <div className="text-accent font-serif text-3xl mb-4">
-                  0{i + 1}
-                </div>
+                <div className="text-accent font-serif text-3xl mb-4">0{i + 1}</div>
                 <h3 className="font-serif text-2xl mb-3">{p.title}</h3>
-                <p className="text-primary-foreground/75 text-sm leading-relaxed">
-                  {p.desc}
-                </p>
+                <p className="text-primary-foreground/75 text-sm leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -240,11 +282,9 @@ function Index() {
       </section>
 
       {/* GALERIA */}
-      <section id="galeria" className="py-24 px-6">
+      <section id="galeria" className="py-20 md:py-28 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">
-            Galeria
-          </div>
+          <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Galeria</div>
           <h2 className="font-serif text-4xl md:text-5xl mb-12 text-balance max-w-2xl">
             Bastidores do cuidado.
           </h2>
@@ -269,19 +309,19 @@ function Index() {
       </section>
 
       {/* CONTATO */}
-      <section id="contato" className="py-24 px-6 bg-secondary/40">
+      <section id="contato" className="py-20 md:py-28 px-6 bg-secondary/40">
         <div className="max-w-4xl mx-auto text-center">
           <div className="text-xs uppercase tracking-[0.2em] text-accent mb-4">Contato</div>
           <h2 className="font-serif text-4xl md:text-6xl mb-6 text-balance">
             Vamos conversar sobre o seu próximo passo.
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-10">
-            Avaliação personalizada, escuta atenta e um plano feito sob medida para
-            os seus objetivos.
+            Avaliação personalizada, escuta atenta e um plano feito sob medida para os seus
+            objetivos.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10 text-left">
             <a
-              href="https://wa.me/5531992003849"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="p-6 rounded-2xl bg-card border border-border hover:border-accent transition"
@@ -308,10 +348,10 @@ function Index() {
             </div>
           </div>
           <a
-            href="https://wa.me/5531992003849"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full gradient-marsala text-primary-foreground text-sm font-medium hover:shadow-[var(--shadow-elegant)] transition"
+            className="inline-flex btn-agendar text-sm px-8 py-4 rounded-full hover:opacity-95 transition"
           >
             Agendar avaliação no WhatsApp →
           </a>
@@ -322,9 +362,9 @@ function Index() {
       <footer className="border-t border-border py-8 px-6 text-center text-sm text-muted-foreground">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="" className="h-8 w-8 object-contain" />
+            <img src={logo} alt="" className="h-10 w-auto object-contain drop-shadow-[0_1px_6px_rgba(0,0,0,0.3)]" />
             <span className="font-serif text-base text-foreground">
-              Ágatha Emanuelle <span className="text-accent">·</span> Biomédica Esteta
+              Dra. Ágatha Emanuelle <span className="text-accent">·</span> Biomédica Esteta
             </span>
           </div>
           <div>© {new Date().getFullYear()} — Todos os direitos reservados.</div>

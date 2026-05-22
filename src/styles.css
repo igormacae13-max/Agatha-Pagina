@@ -125,3 +125,18 @@
 @utility animate-fade-up {
   animation: fade-up 0.8s ease-out forwards;
 }
+
+@utility hero-gold-lines {
+  background-image:
+    linear-gradient(125deg, transparent 42%, oklch(0.75 0.11 82 / 0.35) 42%, oklch(0.75 0.11 82 / 0.35) 42.15%, transparent 42.15%),
+    linear-gradient(55deg, transparent 58%, oklch(0.75 0.11 82 / 0.25) 58%, oklch(0.75 0.11 82 / 0.25) 58.15%, transparent 58.15%);
+}
+
+@utility btn-agendar {
+  background: oklch(0.72 0.09 78);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px oklch(0.72 0.09 78 / 0.35);
+}
